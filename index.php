@@ -89,7 +89,7 @@ if(isset($_GET['user']))
 <form method='GET' action='index.php' class="well form-inline">
     <input type="text" class="form-control" id="username" name="user" class="input-medium" placeholder="username">
     &nbsp;
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success">Log in</button>
 </form>
 </div>
 

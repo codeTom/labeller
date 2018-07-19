@@ -59,7 +59,6 @@ setup = function (image_id, usr){
 loadimage = function (data){
     if(typeof data == "string")
         data=JSON.parse(data);
-
     labels=data.labels;
     image=data.image;
     image_url=image.url;
@@ -82,6 +81,8 @@ loadimage = function (data){
         ctx.drawImage(image, 0, 0);
         ctx.strokeStyle = 'black';
         ctx.lineWidth = 10;
+        scale=1;
+        $("#canvas").css({'transform':'scale(1,1) translate(0px,0px)'});
         redrawAll();
         };
 
@@ -145,8 +146,10 @@ loadimage = function (data){
         console.log(cw+":"+image.width);
         $("#canvas").css({'transform-origin':'0px 0px','transform':'translate(-'+scale*xv+'px,-'+scale*yv+'px) scale('+scale+','+scale+')'});
     }
-
+    lastscroll=0
     $("#canvas").bind('wheel mousewheel',function(e){
+        if ( (new Date() - lastscroll) < 60)
+            return;
         if (e.originalEvent.wheelDelta !== undefined)
             delta = e.originalEvent.wheelDelta;
         else
@@ -156,6 +159,7 @@ loadimage = function (data){
         }else if(delta<0){
             zoomTo(mx,my,1/1.3);
         }
+        lastscroll=new Date();
     });
 
     function drawBox(x1,y1,x2,y2,colour){
