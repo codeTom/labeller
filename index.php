@@ -24,6 +24,7 @@ if(isset($_GET['user']))
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-waitingfor/1.2.7/bootstrap-waitingfor.min.js"></script>
     <script src="canvas.js"></script>
     <script>
         <?php if(!$user){?>
@@ -31,7 +32,7 @@ if(isset($_GET['user']))
                 $("#login").show();
             }
         <?php }else{ ?>
-            window.onload=function(){ setup(<?php echo "'$image','$user'"; ?>); };
+            window.onload=function(){ $("#loading").show(); setup(<?php echo "'$image','$user'"; ?>); };
         <?php } ?>
     </script>
 </head>
@@ -93,6 +94,8 @@ if(isset($_GET['user']))
 </form>
 </div>
 
+
+
 <div style="
     position: absolute;
     top: 50%;
@@ -101,6 +104,15 @@ if(isset($_GET['user']))
     padding:5%;
     display:none; text-align: center;" id="alldone" class="alert alert-success">
 <strong>Thank you!</strong><br />Please check back later as we might add more images.
+</div>
+<div style="
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding:5%;
+    display:none; text-align: center;" id="loading" class="alert alert-info">
+Loading next image...
 </div>
 </body>
 </html>

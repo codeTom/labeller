@@ -31,6 +31,7 @@ setup = function (image_id, usr){
             labels:labels,
             'image_id':imgid,
         };
+        $("#loading").show();
         $.ajax({
             type: "POST",
             url: "api.php?save=true&user="+user,
@@ -41,11 +42,15 @@ setup = function (image_id, usr){
     });
 
     $("#bad").click(function(c){
+        if(!confirm("Are you sure you wish to mark this image as useless?")){
+            return;
+        }
         labels=[{"x1":0,"x2":0,"y1":0,"y2":0,"type":"bad", "username": user, "time": new Date().getTime()}];
         ldata={
             labels:labels,
             'image_id':imgid,
         };
+        $("#loading").show();
         $.ajax({
             type: "POST",
             url: "api.php?save=true&user="+user,
@@ -64,6 +69,7 @@ loadimage = function (data){
     image_url=image.url;
     imgid=image.image_id;
     if(image_url == null || image_url=="null"){
+        $("#loading").hide();
         $("#alldone").show();
         return;
     }
@@ -82,8 +88,10 @@ loadimage = function (data){
         ctx.strokeStyle = 'black';
         ctx.lineWidth = 10;
         scale=1;
+        console.log(waitingDialog);
         $("#canvas").css({'transform':'scale(1,1) translate(0px,0px)'});
         redrawAll();
+        $("#loading").hide();
         };
 
     function getSelectedLabel(){
