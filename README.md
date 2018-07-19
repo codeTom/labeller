@@ -1,1 +1,1 @@
-A very basic image labeling tool
+A very basic image labelling tool
