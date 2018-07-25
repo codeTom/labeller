@@ -1,9 +1,9 @@
 <?php
-error_reporting(E_ALL); ini_set('display_errors', '1');
-//this may be better in pure js, but this was faster
+
 $labels=["parasite"=>"Parasite", "abcell"=>"Abnormal WBC","zoom"=>"Zoom +"];
 $img_asprat=1803.0/1197.0;
 
+//padding to maintain image aspect ratio
 $pad=1/$img_asprat*100;
 
 $user=""; //TODO login and checks
@@ -93,8 +93,6 @@ if(isset($_GET['user']))
     <button type="submit" class="btn btn-success">Log in</button>
 </form>
 </div>
-
-
 
 <div style="
     position: absolute;

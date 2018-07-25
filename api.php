@@ -3,6 +3,10 @@ require_once("config.php");
 $db=new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
 //TODO check $user or admin logged-in
 
+
+/**
+* Get next image for given user, ordered by image priority
+*/
 function nextImage($user){
     global $db;
     $user=$db->real_escape_string($user);

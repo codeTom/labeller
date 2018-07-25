@@ -1,10 +1,12 @@
 <?php
-/*
-* This should be run on the command line, it will rename images in the given folder so that the names are safe
+/**
+* Import images from $indir into $outdir and add them to the database,
+* renaming images to random identifiers. Run in the command line to get readable log.
 */
 
 $indir="./data/";
 $outdir="images/";
+//how many people should label these images
 $process=3;
 $priority=50;
 $type='thin1';
