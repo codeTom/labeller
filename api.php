@@ -1,6 +1,7 @@
 <?php
 require_once("config.php");
 $db=new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+$db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
 //TODO check $user or admin logged-in
 
 
