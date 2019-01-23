@@ -1,10 +1,6 @@
 <?php
 
 $labels=["parasite"=>"Parasite", "abcell"=>"Abnormal WBC","zoom"=>"Zoom +"];
-$img_asprat=1803.0/1197.0;
-
-//padding to maintain image aspect ratio
-$pad=1/$img_asprat*100;
 
 $user=""; //TODO login and checks
 $image="";
@@ -76,8 +72,8 @@ if(isset($_GET['user']))
         </div>
     </div>
 </nav>
-<div id="content" class="container" style="overflow: hidden; width: 80%; padding-bottom: <?php echo $pad; ?>%" >
-        <canvas id="canvas" style="width:90%; height:90%; margin: 0; padding: 0;"></canvas>
+<div id="content" class="container" style="overflow: hidden; max-width: 80%; height: 100%" >
+        <canvas id="canvas" style="height:99%; margin: 0; padding: 0;"></canvas>
 </div>
 </div>
 <div id="login" style="

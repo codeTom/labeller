@@ -1,6 +1,7 @@
 CREATE TABLE images (image_id int not null auto_increment,
                      url varchar(128),
                      type varchar(64),
+                     filename varchar(64),
                      process int,
                      added datetime,
                      priority int,

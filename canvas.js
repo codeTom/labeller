@@ -142,8 +142,12 @@ loadimage = function (data){
     function zoomTo(x,y,s){
         //we need to shift x,y to make the point to centre the image on this point
         //currently we see width/scale of the image, we subtract half of this to get the centre
-        if(scale*s<1)
+        if(scale*s<1){
+            //reset to default zoom
+            scale=1;
+            $("#canvas").css({'transform':'scale(1,1) translate(0px,0px)'});
             return;
+        }
         scale*=s;
         x-=image.width/scale/2.0;
         y-=image.height/scale/2.0;
