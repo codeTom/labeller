@@ -7,6 +7,8 @@ A very basic image labelling tool with zoom support.
   * Use import.php to import your images
 
 To view labels in browser, use get parameters `user={user}&image_id={id}`.
+To export all data go to api.php?key={KEY}&data , where {KEY} is the key set
+in config.php (keep this safe).
 
 ##### TODO:
   * Auth
