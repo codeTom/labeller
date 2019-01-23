@@ -4,3 +4,4 @@ define("DB_HOST", "localhost");
 define("DB_NAME", "labeller");
 define("DB_USER", "");
 define("DB_PASS", "");
+define("KEY","");//api key for data export

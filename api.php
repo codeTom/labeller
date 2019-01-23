@@ -47,3 +47,19 @@ if(isset($_REQUEST['save'])){
     echo json_encode((object) ['labels'=>$labels,'image'=>$image]);
     exit(0);
 }
+
+//dump all data
+if(isset($_REQUEST['data'])&&$_REQUEST['key']==KEY){
+    global $db;
+    $data=[];
+    foreach($db->query("SELECT * FROM images;") as $img){
+        foreach($db->query("SELECT * from labels where image_id=$img[image_id]") as $l){
+            if(!isset($img['labels']))
+                $img['labels']=[];
+            $img['labels'][]=$l;
+        }
+        $data[]=$img;
+    }
+    header('Content-Type: application/json');    
+    echo json_encode($data);
+}
